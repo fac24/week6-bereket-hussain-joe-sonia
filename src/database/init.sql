@@ -6,11 +6,10 @@ CREATE TABLE products (
     id SERIAL PRIMARY KEY, 
     name TEXT NOT NULL, 
     description TEXT NOT NULL,
-    price MONEY NOT NULL CHECK (price > 0)
+    price MONEY NOT NULL CHECK (price::numeric::int > 0)
 );
 
-INSERT INTO products VALUES (
-    (1, "apathy", "Do you even care?", 5)
-);
+INSERT INTO products (name, description, price) VALUES
+    ('Apathy', 'Do you even care?', 5);
 
 COMMIT;
