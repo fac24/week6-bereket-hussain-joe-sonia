@@ -27,11 +27,11 @@ export default function Home({ products }) {
         </h1>
         <ul>
           {products.map((product) => (
-            <>
+            <li key={product.id}>
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>{product.price}</p>
-            </>
+            </li>
           ))}
         </ul>
       </main>
