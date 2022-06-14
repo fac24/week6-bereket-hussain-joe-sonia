@@ -31,7 +31,7 @@ export default function Home({ products }) {
             <li key={product.id}>
               <Link href={"/products/" + product.name}>
                 <a>
-                  <h2>{product.name}</h2>ç
+                  <h2>{product.name}</h2>
                 </a>
               </Link>
               <p>{product.description}</p>
