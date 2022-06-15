@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { getProducts } from "../src/database/model";
 import styles from "../styles/Home.module.css";
 
@@ -33,6 +34,13 @@ export default function Home({ products }) {
               <h2>{product.name}</h2>
               <p className={styles.description}>{product.description}</p>
               <p>{product.price}</p>
+
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={500}
+                height={350}
+              />
             </li>
           ))}
         </ul>
