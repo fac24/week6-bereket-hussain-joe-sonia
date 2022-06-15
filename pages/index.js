@@ -23,25 +23,20 @@ export default function Home({ products }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to out page, where you can bag yourself some Emotions!
+          Emotion
+          
         </h1>
-
-        <nav>
-<input type="text" name="text" className={styles.input}></input>
-<button className={styles.button}>Click to add</button>
-
-        </nav>
-        <div className={styles.products}>
+        <p>Welcome to out page, where you can bag yourself some Emotions!</p>
         <ul>
           {products.map((product) => (
-            <li key={product.id}>
+            <li key={product.id} className={styles.card}>
               <h2>{product.name}</h2>
               <p className={styles.description}>{product.description}</p>
               <p>{product.price}</p>
             </li>
           ))}
         </ul>
-        </div>
+    
       </main>
 
       <footer className={styles.footer}></footer>
