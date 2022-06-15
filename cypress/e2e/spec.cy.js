@@ -1,5 +1,5 @@
-describe("empty spec", () => {
-  it("passes", () => {
+describe("can navigate ", () => {
+  it("to home pages", () => {
     cy.visit("/");
   });
 });
