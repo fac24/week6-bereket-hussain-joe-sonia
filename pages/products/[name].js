@@ -30,7 +30,7 @@ export default function Product({ productData }) {
           Price: <b>{productData.price}</b> per unit
         </p>
         <form action="/add-to-basket" method="post">
-          <label for="quantity">Quantity:</label>
+          <label htmlFor="quantity">Quantity:</label>
           <input
             id="quantity"
             name="quantity"
