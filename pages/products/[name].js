@@ -25,7 +25,7 @@ export default function Product({ productData }) {
         <a className="back-to-all">&larr; Back to all products</a>
       </Link>
       <section>
-        <h1>{productData.name}</h1>
+        <h2>{productData.name}</h2>
         <p>
           Price: <b>{productData.price}</b> per unit
         </p>

@@ -15,6 +15,12 @@ async function getProduct(name) {
   return product.rows[0];
 }
 
+async function getProductBasedOnId(id){
+  const SELECT_PRODUCT = `SELECT * FROM products WHERE id = $1`; 
+  const product = await db.query(SELECT_PRODUCT, [id]);
+  return product.rows[0];
+}
+
 module.exports = {
   getProducts,
   getProduct,

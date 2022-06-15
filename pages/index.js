@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getProducts } from "../src/database/model";
 import styles from "../styles/Home.module.css";
 
+
 export async function getServerSideProps() {
   const products = await getProducts();
   return {
@@ -23,6 +24,7 @@ export default function Home({ products }) {
       </Head>
 
       <main className={styles.main}>
+        
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
