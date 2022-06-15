@@ -40,8 +40,8 @@ export default function Home({ products }) {
               <Image
                 src={product.image}
                 alt={product.name}
-                width={300}
-                height={400}
+                width={500}
+                height={350}
               />
             </li>
           ))}
