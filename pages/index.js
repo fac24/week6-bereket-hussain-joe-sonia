@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { getProducts } from "../src/database/model";
 import styles from "../styles/Home.module.css";
 
@@ -28,7 +29,11 @@ export default function Home({ products }) {
         <ul>
           {products.map((product) => (
             <li key={product.id}>
-              <h2>{product.name}</h2>
+              <Link href={"/products/" + product.name}>
+                <a>
+                  <h2>{product.name}</h2>
+                </a>
+              </Link>
               <p>{product.description}</p>
               <p>{product.price}</p>
 
@@ -36,7 +41,7 @@ export default function Home({ products }) {
                 src={product.image}
                 alt={product.name}
                 width={300}
-                height={500}
+                height={400}
               />
             </li>
           ))}
