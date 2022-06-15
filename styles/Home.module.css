@@ -6,8 +6,6 @@
 }
 
 .main {
-
-  
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -33,6 +31,14 @@
   flex-grow: 1;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vw;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -48,7 +54,6 @@
   margin: 0;
   line-height: 1.15;
   font-size: 1.5rem;
- 
 }
 
 .title,
@@ -80,7 +85,10 @@
 }
 
 .card {
-
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100vw;
   margin: 1rem;
   padding: 1.5rem;
   text-align: left;

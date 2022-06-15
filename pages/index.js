@@ -27,7 +27,7 @@ export default function Home({ products }) {
           Emotion
           
         </h1>
-        <p>Welcome to out page, where you can bag yourself some Emotions!</p>
+        <p>Welcome to our page, where you can bag yourself some Emotions for a bargain!</p>
         <ul>
           {products.map((product) => (
             <li key={product.id} className={styles.card}>
