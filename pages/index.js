@@ -36,6 +36,13 @@ export default function Home({ products }) {
               </Link>
               <p>{product.description}</p>
               <p>{product.price}</p>
+
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={500}
+                height={350}
+              />
             </li>
           ))}
         </ul>
