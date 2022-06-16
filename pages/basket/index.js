@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 const basketArray = [
   { product_id: 1, quantity: 2 },
   { product_id: 3, quantity: 1 },
@@ -9,15 +10,14 @@ const basketArray = [
 export default function Basket() {
   return (
     <>
-    <h2>My basket</h2>
-    <Link href="/">
+      <h2>My basket</h2>
+      <Link href="/">
         <a>Continue Shopping</a>
-    </Link>
-        
-    </>
-  ) ;
-}
+      </Link>
 
+    </>
+  );
+}
 
 //break basket into smaller components
 //basket ARRay
