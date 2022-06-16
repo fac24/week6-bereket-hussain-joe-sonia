@@ -11,15 +11,18 @@ const basketArray = [
 export async function getServerSideProps() {
   const productsInBasket = basketArray.map(async (product) => {
     // console.log(`product id: ${product.product_id}`);
-    // return await getProductBasedOnId(product.product_id);
-    return "hiyaa";
+    return await getProductBasedOnId(product.product_id);
   });
 
-  // const productsInBasket = "hello";
+  // productsInBasket.then((element) => {
+  //   console.log(element);
+  // });
+
+  console.log(productsInBasket);
 
   return {
     props: {
-      productsInBasket,
+      await productsInBasket,
     },
   };
 }
