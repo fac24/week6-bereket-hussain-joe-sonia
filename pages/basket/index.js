@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { getProductBasedOnId } from "../../src/database/model";
+
 const basketArray = [
   { product_id: 1, quantity: 2 },
   { product_id: 3, quantity: 1 },
@@ -6,18 +8,34 @@ const basketArray = [
   { product_id: 5, quantity: 2 },
 ];
 
-export default function Basket() {
-  return (
-    <>
-    <h2>My basket</h2>
-    <Link href="/">
-        <a>Continue Shopping</a>
-    </Link>
-        
-    </>
-  ) ;
+export async function getServerSideProps() {
+  const productsInBasket = basketArray.map(async (product) => {
+    // console.log(`product id: ${product.product_id}`);
+    // return await getProductBasedOnId(product.product_id);
+    return "hiyaa";
+  });
+
+  // const productsInBasket = "hello";
+
+  return {
+    props: {
+      productsInBasket,
+    },
+  };
 }
 
+export default function Basket({ productsInBasket }) {
+  console.log(productsInBasket);
+
+  return (
+    <>
+      <h2>My basket</h2>
+      <Link href="/">
+        <a>Continue Shopping</a>
+      </Link>
+    </>
+  );
+}
 
 //break basket into smaller components
 //basket ARRay
