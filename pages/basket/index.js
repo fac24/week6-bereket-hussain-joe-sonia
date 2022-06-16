@@ -53,7 +53,7 @@ export default function Basket({ products }) {
 
       <div>
         {products.map((product, index) => (
-          <div>
+          <div key={product.id}>
             <h2>{product.name}</h2>
             <p>quantity: {quantity[index]}</p>
           </div>
