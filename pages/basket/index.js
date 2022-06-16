@@ -17,17 +17,19 @@ import { getProductBasedOnId } from "../../src/database/model";
 // }
 
 const basketArray = [
-  { product_id: 1, quantity: 2 },
-  { product_id: 3, quantity: 1 },
-  { product_id: 4, quantity: 1 },
-  { product_id: 5, quantity: 3 },
+  { product_id: 1, quantity: 2, price: 5 },
+  { product_id: 3, quantity: 1, price: 3 },
+  { product_id: 4, quantity: 1, price: 9 },
+  { product_id: 5, quantity: 3, price: 7 },
 ];
 let itemIds = [];
 let quantity = [];
+let price = [];
 
 basketArray.map((items) => {
   itemIds.push(items.product_id);
   quantity.push(items.quantity);
+  price.push(items.price);
 
   // console.log(itemIds);
 });
@@ -55,7 +57,8 @@ export default function Basket({ products }) {
         {products.map((product, index) => (
           <div key={product.id}>
             <h2>{product.name}</h2>
-            <p>quantity: {quantity[index]}</p>
+            <p>quantity:{quantity[index]}</p>
+            <p>price:{product.price}</p>
           </div>
         ))}
       </div>
