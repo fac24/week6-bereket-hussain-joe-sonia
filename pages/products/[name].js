@@ -31,14 +31,12 @@ export default function Product({ productData }) {
           Price: <b>{productData.price}</b> per unit
         </p>
         <form action="../api/form" method="post">
-          <label htmlFor="productId" className="hidden">
-            <input
-              id="productId"
-              name="productId"
-              type="number"
-              value={productData.id}
-            />
-          </label>
+          <input
+            id="productId"
+            name="productId"
+            type="hidden"
+            value={productData.id}
+          />
 
           <label htmlFor="quantity">Quantity:</label>
           <input
