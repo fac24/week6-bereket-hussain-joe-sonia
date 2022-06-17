@@ -10,6 +10,10 @@ export async function getServerSideProps() {
     const data = await response.json();
 
     let items = data;
+
+    // Sort the products-in-basket array by product id (ascending)
+    items.sort((a, b) => a.product_id - b.product_id);
+
     items.map((items) => {
       itemIds.push(items.product_id);
       quantity.push(items.quantity);
