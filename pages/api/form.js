@@ -16,7 +16,6 @@ export default function handler(req, res) {
   //       .status(400)
   //       .json({ id: body.productId, quantity: body.quantity });
   //   }
-
   // Found the name.
   // Sends a HTTP success code
   res.status(200).json(basketItems);

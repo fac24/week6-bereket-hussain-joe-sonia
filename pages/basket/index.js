@@ -2,36 +2,34 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getProductBasedOnId } from "../../src/database/model";
 
-let itemIds = [];
-let quantity = [];
-
-let items = [];
-
-const fetchItems = async () => {
-  const response = await fetch("/api/form");
-  const data = await response.json();
-  console.log(data);
-  items = data;
-};
-
-items.map((items) => {
-  itemIds.push(items.product_id);
-  quantity.push(items.quantity);
-});
-
 export async function getServerSideProps() {
-  const products = await getProductBasedOnId(itemIds);
-  return {
-    props: {
-      products,
-    },
+  const myFunction = async () => {
+    let itemIds = [];
+    let quantity = [];
+    const response = await fetch(`${process.env.BASE_URL}/api/form`);
+    const data = await response.json();
+
+    let items = data;
+    items.map((items) => {
+      itemIds.push(items.product_id);
+      quantity.push(items.quantity);
+    });
+    const products = await getProductBasedOnId(itemIds);
+
+    return {
+      props: {
+        products: products,
+        quantity: quantity,
+      },
+    };
   };
+
+  return await myFunction();
 }
 
-export default function Basket({ products }) {
+export default function Basket({ products, quantity }) {
   return (
     <>
-      <button onClick={fetchItems}>fetch</button>
       <h2>My basket</h2>
       <Link href="/">
         <a>Continue Shopping</a>
