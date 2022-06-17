@@ -6,7 +6,9 @@ export async function getServerSideProps() {
   const myFunction = async () => {
     let itemIds = [];
     let quantity = [];
-    const response = await fetch(`${process.env.BASE_URL}/api/form`);
+    const response = await fetch(
+      "https://week6-bereket-hussain-joe-sonia-git-add-to-basket-bhjs.vercel.app/api/form"
+    );
     const data = await response.json();
 
     let items = data;
