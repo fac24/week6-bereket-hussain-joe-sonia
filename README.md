@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Week 6 project
 
-## Getting Started
+## Bereket, Hussain, Joe, Sonia
 
-First, run the development server:
+### How to use
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- View the app deployed on Vercel here: https://week6-bereket-hussain-joe-sonia.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- You can view all our products on the landing page.
+- You can click a product name to view its individual product page.
+- You **can't** add products to your basket or view your basket yet! (It's WIP :)
+- Styles are broken because we haven't removed the bootstrapped ones that are made (when we created the project with ``create-next-app``).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### How to set up your own local development version
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- ``git clone https://github.com/fac24/week6-bereket-hussain-joe-sonia.git``
+- ``cd`` into the dir that was made.
+- ``npm install`` (careful, it'll install Cypress! Edit ``package.json`` if you don't want it to :)
+- Run ``./scripts/create_db`` from the project root directory.
+- Run ``./scripts/populate_db``. Keep an eye out for errors - if either hit an error, they'll stop. You might need to fix something yourself.
+- ``npm run dev``
+- Open [http://localhost:3000/](http://localhost:3000/) in your web browser.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Next steps
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Finish the basket functionality. Get a rough idea of how it's supposed to work by checking out our Figma sketches: https://www.figma.com/file/VqeBuI3rZ0eNwXJR4RmQGE/E-motion-E-commerce?node-id=0%3A1
+- Finish styling.
