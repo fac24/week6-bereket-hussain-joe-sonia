@@ -2,7 +2,7 @@
 import { getProduct } from "../../src/database/model";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export async function getServerSideProps({ params }) {
   const productData = await getProduct(params.name);
@@ -12,9 +12,10 @@ export async function getServerSideProps({ params }) {
     },
   };
 }
+// export let basket = [];
 
 export default function Product({ productData }) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantityState, setQuantity] = useState(1);
 
   return (
     <>
@@ -29,13 +30,20 @@ export default function Product({ productData }) {
         <p>
           Price: <b>{productData.price}</b> per unit
         </p>
-        <form action="/add-to-basket" method="post">
+        <form action="../api/form" method="post">
+          <input
+            id="productId"
+            name="productId"
+            type="hidden"
+            value={productData.id}
+          />
+
           <label htmlFor="quantity">Quantity:</label>
           <input
             id="quantity"
             name="quantity"
             type="number"
-            value={quantity}
+            value={quantityState}
             min="1"
             max="1000"
             required

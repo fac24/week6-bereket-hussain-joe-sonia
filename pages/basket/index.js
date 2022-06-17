@@ -1,49 +1,39 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { getProductBasedOnId } from "../../src/database/model";
 
-// await getProductBasedOnId(id)
-
-// export async function getServerSideProps() {
-//   const products = basketArray.map(async (item) => {
-//     let itemID = item.product_id;
-//     return await getProductBasedOnId(itemID);
-//   });
-//   console.log(products);
-//   return {
-//     props: {
-//       products,
-//     },
-//   };
-// }
-
-const basketArray = [
-  { product_id: 1, quantity: 2 },
-  { product_id: 3, quantity: 1 },
-  { product_id: 4, quantity: 1 },
-  { product_id: 5, quantity: 3 },
-];
-let itemIds = [];
-let quantity = [];
-
-basketArray.map((items) => {
-  itemIds.push(items.product_id);
-  quantity.push(items.quantity);
-
-  // console.log(itemIds);
-});
-
 export async function getServerSideProps() {
-  // console.log(itemIds);
+  const myFunction = async () => {
+    let itemIds = [];
+    let quantity = [];
+    const response = await fetch(
+      "https://week6-bereket-hussain-joe-sonia-git-add-to-basket-bhjs.vercel.app/api/form"
+    );
+    const data = await response.json();
 
-  const products = await getProductBasedOnId(itemIds);
-  return {
-    props: {
-      products,
-    },
+    let items = data;
+
+    // Sort the products-in-basket array by product id (ascending)
+    items.sort((a, b) => a.product_id - b.product_id);
+
+    items.map((items) => {
+      itemIds.push(items.product_id);
+      quantity.push(items.quantity);
+    });
+    const products = await getProductBasedOnId(itemIds);
+
+    return {
+      props: {
+        products: products,
+        quantity: quantity,
+      },
+    };
   };
+
+  return await myFunction();
 }
 
-export default function Basket({ products }) {
+export default function Basket({ products, quantity }) {
   return (
     <>
       <h2>My basket</h2>
