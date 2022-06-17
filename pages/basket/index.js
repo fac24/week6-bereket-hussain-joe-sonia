@@ -9,49 +9,53 @@ const basketArray = [
 ];
 
 export async function getServerSideProps() {
+  // There are lots of ways of doing this.
+  // This is just one, and maybe not the best one! :B
+
+  // Make an array of promises for each DB query.
+  // (Note that the arrow callback function for map is async.)
   const productsInBasket = basketArray.map(async (product) => {
-    // console.log(`product id: ${product.product_id}`);
     return await getProductBasedOnId(product.product_id);
   });
 
-  // productsInBasket.then((element) => {
-  //   console.log(element);
-  // });
-
-  console.log(productsInBasket);
-
-  return {
-    props: {
-      await productsInBasket,
-    },
-  };
+  // Use Promise.all to resolve each promise in above array.
+  // Return what Promise.all returns, which is the required props obj.
+  return Promise.all(productsInBasket).then((resolve) => {
+    return {
+      props: {
+        productsInBasket: resolve,
+      },
+    };
+  });
 }
 
 export default function Basket({ productsInBasket }) {
-  console.log(productsInBasket);
-
   return (
     <>
       <h2>My basket</h2>
       <Link href="/">
         <a>Continue Shopping</a>
       </Link>
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Sub-total</td>
+        </tr>
+        {productsInBasket.map((productInBasket, index) => (
+          <tr key={productInBasket.id}>
+            <td>{productInBasket.name}</td>
+            <td>£{productInBasket.price.substring(1)}</td>
+            <td>{basketArray[index].quantity}</td>
+            <td>
+              £
+              {Number(basketArray[index].quantity) *
+                Number(productInBasket.price.substring(1))}
+            </td>
+          </tr>
+        ))}
+      </table>
     </>
   );
 }
-
-//break basket into smaller components
-//basket ARRay
-//basket icon
-//basket table
-//add function (for the sum?)/ logic
-// multiply also? for the quantity
-
-// map to render selected/stored items in the basket
-//use ID from  basket array to grab product info from the databse
-
-// SELECT * FROM products WHERE id=$1
-
-//map =>{ inject into the table databse }
-
-//
