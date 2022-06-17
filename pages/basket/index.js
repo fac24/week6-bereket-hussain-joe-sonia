@@ -1,40 +1,25 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { getProductBasedOnId } from "../../src/database/model";
 
-// await getProductBasedOnId(id)
-
-// export async function getServerSideProps() {
-//   const products = basketArray.map(async (item) => {
-//     let itemID = item.product_id;
-//     return await getProductBasedOnId(itemID);
-//   });
-//   console.log(products);
-//   return {
-//     props: {
-//       products,
-//     },
-//   };
-// }
-
-const basketArray = [
-  { product_id: 1, quantity: 2 },
-  { product_id: 3, quantity: 1 },
-  { product_id: 4, quantity: 1 },
-  { product_id: 5, quantity: 3 },
-];
 let itemIds = [];
 let quantity = [];
 
-basketArray.map((items) => {
+let items = [];
+
+const fetchItems = async () => {
+  const response = await fetch("/api/form");
+  const data = await response.json();
+  console.log(data);
+  items = data;
+};
+
+items.map((items) => {
   itemIds.push(items.product_id);
   quantity.push(items.quantity);
-
-  // console.log(itemIds);
 });
 
 export async function getServerSideProps() {
-  // console.log(itemIds);
-
   const products = await getProductBasedOnId(itemIds);
   return {
     props: {
@@ -46,6 +31,7 @@ export async function getServerSideProps() {
 export default function Basket({ products }) {
   return (
     <>
+      <button onClick={fetchItems}>fetch</button>
       <h2>My basket</h2>
       <Link href="/">
         <a>Continue Shopping</a>
